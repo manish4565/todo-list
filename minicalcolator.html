@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Calculator</title>
+</head>
+<body>
+  <h1>Mini Calculator</h1>
+
+  <input type="number" id="num1" placeholder="Enter first number">
+  <input type="number" id="num2" placeholder="Enter second number"><br><br>
+
+  <button onclick="calculate('add')">Add</button>
+  <button onclick="calculate('subtract')">Subtract</button>
+  <button onclick="calculate('divide')">Divide</button>
+  <button onclick="calculate('multiply')">Multiply</button>
+
+  <script>
+    function calculate(operation) {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+
+      let result;
+      switch (operation) {
+        case 'add':
+          result = num1 + num2;
+          alert(`Result of addition: ${result}`);
+          break;
+        case 'subtract':
+          result = num1 - num2;
+          alert(`Result of subtraction: ${result}`);
+          break;
+        case 'divide':
+          if (num2 !== 0) {
+            result = num1 / num2;
+            alert(`Result of division: ${result}`);
+          } else {
+            alert("Error: Cannot divide by zero");
+          }
+          break;
+        case 'multiply':
+          result = num1 * num2;
+          alert(`Result of multiplication: ${result}`);
+          break;
+        default:
+          alert("Invalid operation");
+      }
+    }
+  </script>
+</body>
+</html>
