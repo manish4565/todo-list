@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Manager</title>
+  <style>
+    /* Some basic CSS for table styling */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    /* Highlighting priority with background color */
+    .high-priority {
+      background-color: red;
+      color: white;
+    }
+    .low-priority {
+      background-color: green;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Task Manager</h1>
+  
+  <!-- Form -->
+  <form id="taskForm">
+    <input type="text" id="taskName" placeholder="Task Name" required><br><br>
+    <select id="priority" required>
+      <option value="">Select Priority</option>
+      <option value="high">High</option>
+      <option value="low">Low</option>
+    </select><br><br>
+    <input type="submit" value="Add Task">
+  </form>
+
+  <!-- Table to display task data -->
+  <table>
+    <thead>
+      <tr>
+        <th>Task Name</th>
+        <th>Priority</th>
+        <th>Favourite</th>
+      </tr>
+    </thead>
+    <tbody id="taskTable">
+      <!-- Data will be displayed here -->
+    </tbody>
+  </table>
+
+  <script>
+    // JavaScript code to handle form submission and table population
+    document.getElementById('taskForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const taskName = document.getElementById('taskName').value;
+      const priority = document.getElementById('priority').value;
+
+      const table = document.getElementById('taskTable');
+      const newRow = table.insertRow();
+
+      newRow.innerHTML = `
+        <td>${taskName}</td>
+        <td class="${priority === 'high' ? 'high-priority' : 'low-priority'}">${priority}</td>
+        <td><button onclick="handleFavourite(this)">Favourite</button></td>
+      `;
+      
+      this.reset(); // Reset the form fields
+    });
+
+    function handleFavourite(btn) {
+      // You can implement the functionality for the "Favourite" button here
+      // For now, it's a placeholder function
+      alert('Favourite button clicked!');
+    }
+  </script>
+</body>
+</html>
